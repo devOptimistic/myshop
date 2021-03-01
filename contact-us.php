@@ -1,10 +1,23 @@
 <?php
-$data = $_POST['frm'];
-$dbc = new mysqli('localhost', 'root', '', 'mydb'); // mysqli_connect
-$sql="INSERT INTO tbl_contact(name,phone,email,text) VALUES ('$data[name]','$data[phone]','$data[email]','$data[text]')";
-$result=$dbc -> query($sql);
-$dbc -> close();
+include_once 'functions.php';
+if (isset($_POST['submit'])){
+    include_once 'settings.php';
+    $data = $_POST['frm'];
+    $sql="INSERT INTO tbl_contact(name,phone,email,text) VALUES ('$data[name]','$data[phone]','$data[email]','$data[text]')";
+    $db = new DB();
+    $db ->execute($sql);
+    unset($db);
+    $alert=alertTmp(" پیام شما با موفقیت ثبت شد!",'success');
+}
+
 ?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="fa">
 <head>
@@ -19,10 +32,7 @@ $dbc -> close();
 </head>
 <body>
 <main class="container">
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>پیام سرور : </strong> پیام شما با موفقیت ثبت شد!
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    <?php echo $alert;?>
 </main>
 
 <script src="js/jquery.js"></script>
