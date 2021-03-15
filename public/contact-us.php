@@ -1,13 +1,15 @@
 <?php
-include_once 'functions.php';
+include '../includes/settings.php';
+include ('../includes/functions.php') ;
 if (isset($_POST['submit'])){
-    include_once 'settings.php';
-    $data = $_POST['frm'];
-    $sql="INSERT INTO tbl_contact(name,phone,email,text) VALUES ('$data[name]','$data[phone]','$data[email]','$data[text]')";
+        
+    // A. validation
+    unset( $_POST['submit'] ); // این پارامتر درج نشود
+
+    // B. Insert in DB
     $db = new DB();
-    $db ->execute($sql);
-    unset($db);
-    $alert=alertTmp(" پیام شما با موفقیت ثبت شد!",'success');
+    Contact::add( $_POST );
+    unset( $db );
 }
 
 ?>
@@ -32,7 +34,6 @@ if (isset($_POST['submit'])){
 </head>
 <body>
     <main class="container">
-        <?php echo $alert;?>
     </main>
 
     <script src="assets/js/jquery.js"></script>
