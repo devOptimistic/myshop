@@ -1,4 +1,7 @@
 <?php
+include 'product.php';
+include 'user.php';
+include 'contact.php';
 if(! class_exists('DB')) {
     class DB{
         var $dbc;
