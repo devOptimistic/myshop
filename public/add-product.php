@@ -1,13 +1,17 @@
 <?php
-include_once '../includes/functions.php';
+include '../includes/settings.php';
+include ('../includes/functions.php') ;
 if (isset($_POST['submit'])){
-    include_once '../includes/settings.php';
-    $data = $_POST['frm'];
-    $sql="INSERT INTO tbl_products(title,price,chid,status,text,img) VALUES ('$data[title]','$data[price]','$data[procat]','$data[status]','$data[text]','image')";
+        
+    // A. validation
+    $imgSrc = 'assets/images/pic.jpg';
+    unset( $_POST['submit'] ); // این پارامتر درج نشود
+    $_POST['imgSrc'] = $imgSrc; // تصویر محصول به پارامترها اضافه شود
+
+    // B. Insert in DB
     $db = new DB();
-    $db ->execute($sql);
-    unset($db);
-    $alert=alertTmp(" محصول شما با موفقیت ثبت شد!",'success');
+    Product::add( $_POST );
+    unset( $db );
 }
 
 ?>
@@ -32,7 +36,6 @@ if (isset($_POST['submit'])){
 </head>
 <body>
     <main class="container">
-        <?php echo $alert;?>
     </main>
 
     <script src="assets/js/jquery.js"></script>
