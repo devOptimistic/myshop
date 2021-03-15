@@ -19,7 +19,7 @@ if( $result )
 unset( $db );
 $db = new DB(); // همراه با انتخاب دیتابیس
 
-$sql = "CREATE TABLE IF NOT EXISTS tbl_contact(
+$sql = "CREATE TABLE IF NOT EXISTS contact(
 		id INT AUTO_INCREMENT NOT NULL,
 		name VARCHAR(255),
 		phone VARCHAR(255),
@@ -32,7 +32,7 @@ if( $result )
 	alerts('جدول پیام با موفقیت ایجاد شد', 'success');
 
 
-    $sql = "CREATE TABLE IF NOT EXISTS tbl_users(
+    $sql = "CREATE TABLE IF NOT EXISTS user(
 		id INT AUTO_INCREMENT NOT NULL,
 		username VARCHAR(255),
 		password VARCHAR(255),
