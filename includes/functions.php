@@ -1,5 +1,27 @@
 <?php
 include 'DB/DB.php';
+if( ! function_exists('get_header') ){
+	function get_header( $name = '' ){
+		if(! empty($name))
+			$name="-{$name}";
+		include "views/templates/header{$name}.php";
+	}
+}
+if( ! function_exists('get_footer') ){
+	function get_footer( $name = '' ){
+		if(! empty($name))
+			$name="-{$name}";
+		include "views/templates/footer{$name}.php";
+	}
+}
+if( ! function_exists('get_template_part') ){
+	function get_template_part($slug,$name = '',$args=array()){
+		if(! empty($name))
+			$name="-{$name}";
+		$row=$args;
+		include "views/templates/{$slug}{$name}.php";
+	}
+}
 
 if( ! function_exists('alertTmp') ){
 	function alertTmp( $text , $type = 'error' ){
