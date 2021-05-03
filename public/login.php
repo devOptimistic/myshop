@@ -10,7 +10,13 @@
             $row=$table[0];
             Authentication::login($row['id']);
             Alert::alerts("{$row['firstname']} عزیز خوش آمدی","success");
-            redirect("dashboard.php");
+
+            if(isset($_SESSION['redirect'])){
+                redirect($_SESSION['redirect']);
+                unset($_SESSION['redirect']);
+            }
+            else
+                redirect("dashboard.php");
         }
         else{
             Alert::alerts("نام کاربری یا رمز عبور اشتباه است");
