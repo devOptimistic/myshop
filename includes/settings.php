@@ -24,4 +24,9 @@ $collate =	COLLATE;
 
 $softSetup = false;
 
+if( ! defined('loginDeadline') ) 
+    define( 'loginDeadline', 30 ); // Days
+if( ! defined('activityDeadline') ) 
+    define( 'activityDeadline', 10 ); // Minutes
+
 ?>
