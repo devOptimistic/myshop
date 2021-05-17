@@ -4,3 +4,4 @@ $_SESSION['salam']="bashe";
 echo "Hello GitHub :D";
 echo "hi Bruda";
 ?>
+Salam
